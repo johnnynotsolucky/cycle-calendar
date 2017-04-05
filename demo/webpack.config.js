@@ -4,6 +4,7 @@ const path = require(`path`);
 const webpack = require(`webpack`);
 const autoprefixer = require(`autoprefixer`);
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -12,7 +13,8 @@ module.exports = {
     vendor: [
       'xstream',
       '@cycle/run',
-      '@cycle/dom'
+      '@cycle/dom',
+      '@cycle/isolate'
     ]
   },
   output: {
@@ -32,13 +34,14 @@ module.exports = {
       filename: 'index.html',
       template: 'demo/index.html',
       inject: true
-    })
+    }),
+    new DashboardPlugin(),
   ],
   module: {
     rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, `src`),
+      use: [{ loader: 'babel-loader' }],
+      exclude: /(node_modules)/,
     }, {
       test: /\.styl$/,
       use: [
@@ -54,7 +57,6 @@ module.exports = {
         },
         { loader: 'stylus-loader' }
       ],
-      include: path.join(__dirname, `src`),
     }]
   },
   devServer: {

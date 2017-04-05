@@ -11,7 +11,8 @@ module.exports = {
       './lib/index',
       'xstream',
       '@cycle/run',
-      '@cycle/dom'
+      '@cycle/dom',
+      '@cycle/isolate'
     ]
   },
   output: {
@@ -25,8 +26,8 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, `src`),
+      use: [{ loader: 'babel-loader' }],
+      exclude: /(node_modules)/,
     }, {
       test: /\.styl$/,
       use: [
@@ -42,7 +43,6 @@ module.exports = {
         },
         { loader: 'stylus-loader' }
       ],
-      include: path.join(__dirname, `src`),
     }]
   }
 };
