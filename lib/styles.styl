@@ -1,0 +1,103 @@
+.calendar
+  background-color: #ffffff
+  font-size: 15px
+  min-width: 250px
+  min-height: 250px
+  width: 250px
+  height: 250px
+  position: relative
+
+.calendar *
+  box-sizing: border-box
+  transition: all 0.2s linear
+
+.calendar
+  .calendar-container
+    position: absolute
+    width: 100%
+    height: 100%
+    display: flex
+    flex-flow: column nowrap
+
+    .calendar-section
+      display: flex
+      flex-flow: column nowrap
+      flex-grow: 6
+      flex-basis: 0
+
+      .calendar-row
+        display: flex
+        flex-flow: row nowrap
+        width: 100%
+        justify-content: center
+        flex-grow: 1
+
+        .calendar-selectable
+          &.calendar-selected
+            background-color: #333333
+            border: solid 1px #333333
+            color: #ffffff
+
+        .calendar-cell
+          background-color: #ffffff
+          border: solid 1px #ffffff
+          align-items: center
+          display: flex
+          flex-flow: row nowrap
+          flex-grow: 1
+          flex-basis: 0
+          justify-content: center
+          word-wrap: break-word
+          overflow-wrap: break-word
+
+      &.calendar-header
+        flex-grow: 1
+
+        .calendar-title
+          flex-grow: 5
+          flex-basis: max-content
+
+        .calendar-prev, .calendar-next
+          cursor: pointer
+          outline: none
+
+        .calendar-prev:before, .calendar-next:before
+          position: relative
+          top: 0
+          content: ""
+          display: inline-block
+          width: 0.6em
+          height: 0.6em
+          border-top: 0.2em solid #1f1f1f
+          transform: rotate(-45deg)
+
+        .calendar-prev:before
+          border-left: 0.2em solid #1f1f1f
+          transform: rotate(-45deg)
+          margin-left: 0.3em
+
+        .calendar-next:before
+          border-right: 0.2em solid #1f1f1f
+          transform: rotate(45deg)
+          margin-right: 0.3em
+
+      .calendar-cell
+        &.calendar-selectable:hover:not(.calendar-selected):not(.calendar-empty)
+          background-color: #cccccc
+          border-color: #cccccc
+
+
+      &.calendar-weekdays
+        flex-grow: 1
+
+      &.calendar-weekdays
+        .calendar-row
+          .calendar-weekday
+            font-weight: bold
+
+      &.calendar-days
+        .calendar-row
+          .calendar-day
+            cursor: pointer
+          .calendar-empty
+            cursor: default
