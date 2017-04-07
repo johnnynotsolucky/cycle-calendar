@@ -10,9 +10,7 @@ module.exports = {
     'cycle-calendar': './lib/index',
     vendor: [
       'xstream',
-      '@cycle/run',
       '@cycle/dom',
-      '@cycle/isolate'
     ]
   },
   output: {
