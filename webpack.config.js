@@ -7,8 +7,8 @@ const autoprefixer = require(`autoprefixer`);
 module.exports = {
   devtool: 'eval',
   entry: {
-    index: [
-      './lib/index',
+    'cycle-calendar': './lib/index',
+    vendor: [
       'xstream',
       '@cycle/run',
       '@cycle/dom',
@@ -21,6 +21,12 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor'],
+      minChunks: function (modules) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    }),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   module: {

@@ -6,22 +6,24 @@ import Calendar from '../lib'
 import { monthNames, dayNames } from '../lib/utils'
 import './styles.styl'
 
-const main = ({ DOM: DOM$ }) => {
+const main = ({ DOM }) => {
   const calendar = Calendar({
-    DOM: DOM$,
-    props: xs.of({
-      value: new Date(2017, 3, 9),
-      monthNames: monthNames(),
-      dayNames: dayNames(),
-      start: 2
-    })
+    DOM,
+    props: xs.of(new Date())
+      .remember()
+      .map(date => ({
+        value: date,
+        monthNames: monthNames(),
+        dayNames: dayNames(),
+        start: 1
+      }))
   })
 
   const vdom$ = xs.combine(calendar.DOM, calendar.value)
     .map(([calendarVDom, calendarValue]) =>
       div([
         calendarVDom,
-        div(calendarValue.toString())
+        div(`Selected: ${calendarValue.toString()}`)
       ])
     )
 
