@@ -9,7 +9,6 @@
     "xstream": ">=10.5.x"
   },
   "dependencies": {
-    "@cycle/isolate": "^2.1.0",
     "@cycle/run": "^1.0.0"
   },
   "devDependencies": {

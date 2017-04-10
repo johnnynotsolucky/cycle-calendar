@@ -1,8 +1,8 @@
-`use strict`;
+'use strict';
 
-const path = require(`path`);
-const webpack = require(`webpack`);
-const autoprefixer = require(`autoprefixer`);
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 
@@ -14,7 +14,6 @@ module.exports = {
       'xstream',
       '@cycle/run',
       '@cycle/dom',
-      '@cycle/isolate'
     ]
   },
   output: {
@@ -51,7 +50,7 @@ module.exports = {
           loader: 'postcss-loader',
           options: {
             plugins() {
-              return [autoprefixer({ browsers: [ `last 2 versions` ] })];
+              return [autoprefixer({ browsers: [ 'last 2 versions' ] })];
             }
           }
         },
