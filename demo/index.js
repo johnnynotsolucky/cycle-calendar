@@ -17,14 +17,13 @@ const dayNames = () => (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])
 const main = ({ DOM }) => {
   const calendar = Calendar({
     DOM,
-    props: xs.of(new Date())
-      .remember()
-      .map(date => ({
-        value: date,
+    props: xs.of({
+        value: new Date(),
         monthNames: monthNames(),
         dayNames: dayNames(),
         start: 1
-      }))
+      })
+      .remember()
   })
 
   const vdom$ = xs.combine(calendar.DOM, calendar.value)
