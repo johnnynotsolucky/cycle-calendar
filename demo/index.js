@@ -3,8 +3,16 @@ import { run } from '@cycle/run'
 import { makeDOMDriver } from '@cycle/dom'
 import { div } from '@cycle/dom'
 import Calendar from '../lib'
-import { monthNames, dayNames } from '../lib/utils'
-import './styles.styl'
+import '../lib/styles.styl'
+import './main.styl'
+
+const monthNames = () => ([
+  'January', 'February', 'March', 'April',
+  'May', 'June', 'July', 'August',
+  'September', 'October', 'November', 'December'
+])
+
+const dayNames = () => (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])
 
 const main = ({ DOM }) => {
   const calendar = Calendar({
