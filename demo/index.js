@@ -2,8 +2,8 @@ import xs from 'xstream'
 import { run } from '@cycle/run'
 import { makeDOMDriver } from '@cycle/dom'
 import { div } from '@cycle/dom'
-import Calendar from '../lib'
-import '../lib/styles.styl'
+import Calendar from '../src'
+import '../src/styles.styl'
 import './main.styl'
 
 const monthNames = () => ([

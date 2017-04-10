@@ -8,11 +8,9 @@
     "@cycle/dom": ">=17.x",
     "xstream": ">=10.5.x"
   },
-  "dependencies": {
-    "@cycle/run": "^1.0.0"
-  },
   "devDependencies": {
     "@cycle/dom": "^17.1.0",
+    "@cycle/run": "^1.0.0",
     "autoprefixer": "^6.7.4",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
@@ -20,20 +18,31 @@
     "babel-preset-env": "^1.2.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-2": "^6.22.0",
+    "browserify": "^14.3.0",
+    "browserify-shim": "^3.8.14",
     "css-loader": "^0.26.1",
     "html-webpack-plugin": "^2.28.0",
     "postcss-loader": "^1.3.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.5.0",
+    "uglify": "^0.1.5",
     "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.4.1",
     "xstream": "^10.5.0"
   },
+  "browserify-shim": {
+    "xstream": "global:xstream",
+    "@cycle/dom": "global:CycleDOM"
+  },
   "scripts": {
     "dev": "webpack-dashboard -- webpack-dev-server --config demo/webpack.config.js",
-    "build": "./build/build.sh"
+    "build": "./build/build.sh",
+    "stylus": "stylus src/*.styl --out lib/",
+    "babel": "babel --out-dir lib src/*.js --source-maps",
+    "browserify": "browserify lib/index.js --global-transform=browserify-shim --standalone CycleCalendar --exclude xstream --exclude \"@cycle/dom\" -o dist/cycle-calendar.js",
+    "uglify": "uglifyjs dist/cycle-calendar.js -o dist/cycle-calendar.min.js"
   },
   "repository": {
     "type": "git",
