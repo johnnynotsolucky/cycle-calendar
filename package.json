@@ -1,6 +1,6 @@
 {
   "name": "cycle-calendar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A calendar component for Cycle.js",
   "author": "Tyrone Tudehope",
   "main": "lib/index.js",
