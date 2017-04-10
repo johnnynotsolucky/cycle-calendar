@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A calendar component for Cycle.js",
   "author": "Tyrone Tudehope",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "peerDependencies": {
     "@cycle/dom": ">=17.x",
     "xstream": ">=10.5.x"
