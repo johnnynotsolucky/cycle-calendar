@@ -17,7 +17,6 @@ const days = action$ => action$
     monthStart: new Date(action.year, action.month).getDay(),
     monthEnd: new Date(action.year, action.month + 1, 0).getDate()
   }))
-  .remember()
 
 export default (props$, actions) =>
   xs.combine(

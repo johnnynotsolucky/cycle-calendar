@@ -11,7 +11,8 @@ const mapValue = state$ => props$ => props$
   )
   .flatten()
 
-export default ({ DOM, props: props$ = xs.empty() }) => {
+export default ({ DOM, props = xs.empty() }) => {
+  const props$ = props.remember()
   const actions = intent(DOM, props$)
   const state$ = model(props$, actions)
   const vdom$ = view(props$, state$)

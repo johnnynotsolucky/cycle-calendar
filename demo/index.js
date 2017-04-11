@@ -18,12 +18,11 @@ const main = ({ DOM }) => {
   const calendar = Calendar({
     DOM,
     props: xs.of({
-        value: new Date(),
-        monthNames: monthNames(),
-        dayNames: dayNames(),
-        start: 1
-      })
-      .remember()
+      value: new Date(),
+      monthNames: monthNames(),
+      dayNames: dayNames(),
+      start: 1
+    })
   })
 
   const vdom$ = xs.combine(calendar.DOM, calendar.value)
