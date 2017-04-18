@@ -18,8 +18,8 @@ const days = action$ => action$
     monthEnd: new Date(action.year, action.month + 1, 0).getDate()
   }))
 
-export default (props$, actions) =>
-  xs.combine(
-    header(props$, actions.changeMonth),
-    days(actions.changeDay)
-  )
+export default (props$, actions) => ({
+  header: header(props$, actions.changeMonth),
+  days: days(actions.changeDay),
+  value: actions.value
+})

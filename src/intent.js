@@ -35,8 +35,9 @@ export default (DOM, props$) => {
         }
       })
 
+  const value$ = selectDay(DOM, props$)
   const changeDay$ = props$
-    .map(({ start }) => selectDay(DOM, props$)
+    .map(({ start }) => value$
       .map(value => changeMonth$
         .compose(setProps(start, value))
       )
@@ -46,6 +47,7 @@ export default (DOM, props$) => {
 
   return ({
     changeMonth: changeMonth$,
-    changeDay: changeDay$
+    changeDay: changeDay$,
+    value: value$,
   })
 }

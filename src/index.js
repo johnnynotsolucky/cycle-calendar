@@ -6,7 +6,7 @@ import view from './view'
 
 const mapValue = state$ => props$ => props$
   .map(props => state$
-    .map(([_, days]) => days.value)
+    .map(date => date)
     .startWith(props.value)
   )
   .flatten()
@@ -14,10 +14,10 @@ const mapValue = state$ => props$ => props$
 export default ({ DOM, props = xs.empty() }) => {
   const props$ = props.remember()
   const actions = intent(DOM, props$)
-  const state$ = model(props$, actions)
-  const vdom$ = view(props$, state$)
+  const state = model(props$, actions)
+  const vdom$ = view(props$, state)
 
-  const value$ = props$.compose(mapValue(state$))
+  const value$ = props$.compose(mapValue(state.value))
 
   return {
     DOM: vdom$,

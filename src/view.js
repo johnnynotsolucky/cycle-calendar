@@ -52,8 +52,8 @@ const renderDays = state => {
   )
 }
 
-export default (props$, state$) => xs.combine(props$, state$)
-  .map(([props, [header, days]]) =>
+export default (props$, state) => xs.combine(props$, state.header, state.days)
+  .map(([props, header, days]) =>
     div('.calendar', [
       div('.calendar-container', [
         renderHeader(header),

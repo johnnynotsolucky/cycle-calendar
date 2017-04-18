@@ -26,12 +26,13 @@ const main = ({ DOM }) => {
   })
 
   const vdom$ = xs.combine(calendar.DOM, calendar.value)
-    .map(([calendarVDom, calendarValue]) =>
-      div([
+    .map(([calendarVDom, calendarValue]) => {
+      // console.log(calendarValue)
+      return div([
         calendarVDom,
         div(`Selected: ${calendarValue.toString()}`)
       ])
-    )
+    })
 
   return {
     DOM: vdom$
